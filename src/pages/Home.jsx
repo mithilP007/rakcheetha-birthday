@@ -8,8 +8,7 @@ import hat from '../assets/hat.png'
 import smileIcon from '../assets/smiley_icon.png'
 import { Link } from "react-router";
 import BookCanvas from "../components/BookCanvas";
-import SmallLetter from "../components/SmallLetter";
-import orihime from "../assets/orihime.jpg";
+import birthdayVideo from "../assets/video.mp4";
 
 const Home = () => {
     // ------------------- Hooks 
@@ -114,8 +113,15 @@ const Home = () => {
 
                     <div className="right">
                         <div className="box__account">
-                            <div className="image">
-                                <img src={orihime} alt="" />
+                            <div className="video_container">
+                                <video
+                                    src={birthdayVideo}
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                    className="birthday_video"
+                                />
                             </div>
                             <div className="name">
                                 <i className="fa-solid fa-heart"></i>
