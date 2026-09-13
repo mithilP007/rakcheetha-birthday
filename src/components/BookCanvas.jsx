@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import orihime from '../assets/orihime.jpg'
+import ruthikaImg from '../assets/ruthika.jpeg'
 import { GiCrossMark } from 'react-icons/gi'
 
 const BookCanvas = ({ active, setActive }) => {
@@ -41,7 +41,7 @@ const BookCanvas = ({ active, setActive }) => {
 
                     {/* User Image remains the same */}
                     <div className="userImg">
-                        <img src={orihime} alt="Recipient's Photo" />
+                        <img src={ruthikaImg} alt="Recipient's Photo" />
                     </div>
 
                     {/* New Hello Kitty themed decoration */}
