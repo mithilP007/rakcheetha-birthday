@@ -502,3 +502,181 @@
         transform: scale(1.1);
     }
 }
+
+/* =========================================================
+   Love Letter Video Showcase Styles
+   ========================================================= */
+
+.love_header {
+    z-index: 50;
+}
+
+.love_back_btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    backdrop-filter: blur(8px);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    transition: all 0.25s ease;
+}
+
+.love_back_btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.love_close_btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.25s ease;
+}
+
+.love_close_btn:hover {
+    background: rgba(255, 64, 129, 0.8);
+    transform: translateY(-2px);
+}
+
+.love_video_modal_wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 25;
+    animation: videoUnfold 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes videoUnfold {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -20%) scale(0.4);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.love_video_card {
+    background: rgba(20, 5, 10, 0.88);
+    border: 3px solid rgba(255, 215, 0, 0.7);
+    border-radius: 24px;
+    padding: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(255, 105, 180, 0.4);
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 92vw;
+}
+
+.love_video_header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-family: 'Sriracha', cursive;
+    font-size: 1.15rem;
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+.video_sparkle {
+    animation: sparkleSpin 2.5s infinite linear;
+}
+
+.video_screen_container {
+    position: relative;
+    width: 540px;
+    height: 310px;
+    max-width: 86vw;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000000;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+
+@media (max-width: 650px) {
+    .video_screen_container {
+        width: 320px;
+        height: 195px;
+    }
+}
+
+.love_video_player {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video_pause_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pause_icon_badge {
+    background: rgba(0, 0, 0, 0.75);
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    backdrop-filter: blur(6px);
+}
+
+.love_video_controls {
+    display: flex;
+    gap: 12px;
+    margin-top: 14px;
+    width: 100%;
+    justify-content: center;
+}
+
+.v_ctrl_btn {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 25px;
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: all 0.25s ease;
+}
+
+.v_ctrl_btn.play_btn {
+    background: linear-gradient(135deg, #ff4081, #ff79b0);
+    border-color: #ff80ab;
+    box-shadow: 0 4px 15px rgba(255, 64, 129, 0.3);
+}
+
+.v_ctrl_btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.v_ctrl_btn.play_btn:hover {
+    background: linear-gradient(135deg, #e91e63, #ff4081);
+}
