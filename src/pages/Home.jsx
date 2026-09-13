@@ -8,12 +8,14 @@ import hat from '../assets/hat.png'
 import smileIcon from '../assets/smiley_icon.png'
 import { Link } from "react-router";
 import BookCanvas from "../components/BookCanvas";
-import SmallLetter from "../components/SmallLetter";
+import CelebrationShow from "../components/CelebrationShow";
+import "../CelebrationShow.css";
 import ruthikaImg from "../assets/ruthika.jpeg";
 
 const Home = () => {
     // ------------------- Hooks 
     const [Active, SetActive] = useState(true);
+    const [showCelebration, setShowCelebration] = useState(false);
 
     useEffect(() => {
         let datetxt = "19 Nov";
@@ -175,10 +177,24 @@ const Home = () => {
                 {/* =========================== BoxMail Canvas =============================== */}
                 <BookCanvas active={Active} setActive={SetActive} />
 
-                {/* ========================== Small letter from rajib ========================= */}
-                <section className="smallLetter absolute md:-bottom-26 -bottom-40 md:left-[45%] left-[50%] -translate-x-1/2" style={{ "--t": "15.6s" }}>
-                    <SmallLetter />
+                {/* ========================== 20-Second Celebration Party Button ========================= */}
+                <section className="celebration_trigger_section">
+                    <button
+                        type="button"
+                        className="celebration_launch_btn"
+                        onClick={() => setShowCelebration(true)}
+                        id="startCelebrationBtn"
+                    >
+                        <span className="btn_sparkle">✨</span>
+                        <span>🎉 Tap to Start Party Show! 🎈</span>
+                        <span className="btn_sparkle">✨</span>
+                    </button>
                 </section>
+
+                {/* ========================== 20-Second Celebration Show Overlay ========================= */}
+                {showCelebration && (
+                    <CelebrationShow onClose={() => setShowCelebration(false)} />
+                )}
             </div>
         </>
     );
