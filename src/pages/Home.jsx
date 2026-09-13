@@ -18,7 +18,7 @@ const Home = () => {
     const [showCelebration, setShowCelebration] = useState(false);
 
     useEffect(() => {
-        let datetxt = "19 Nov";
+        let datetxt = "13 Sep";
         let charArrDate = datetxt.split('');
         let currentIndex = 0;
         let date__of__birth = document.querySelector(".date__of__birth span");
@@ -108,7 +108,7 @@ const Home = () => {
                                             <path strokeLinejoin="round" d="M47.064 33.552A5.885 5.885 0 0 0 36 30.755a5.885 5.885 0 0 0-11.064 2.797c0 1.398.49 2.68 1.304 3.69l-.002.002L36 49.342l9.762-12.098l-.003-.002a5.86 5.86 0 0 0 1.305-3.69z" />
                                         </g>
                                     </svg>
-                                    From Rexon
+                                    From Mithil
                                 </Link>
                             </div>
                         </div>
