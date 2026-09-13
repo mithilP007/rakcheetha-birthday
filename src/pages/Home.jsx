@@ -8,6 +8,7 @@ import hat from '../assets/hat.png'
 import smileIcon from '../assets/smiley_icon.png'
 import { Link } from "react-router";
 import BookCanvas from "../components/BookCanvas";
+import SmallLetter from "../components/SmallLetter";
 import birthdayVideo from "../assets/video.mp4";
 
 const Home = () => {
