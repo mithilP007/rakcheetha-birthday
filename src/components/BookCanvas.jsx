@@ -34,9 +34,6 @@ const BookCanvas = ({ active, setActive }) => {
                         <h3 className="cover-title">
                             Happy Birthday!
                         </h3>
-                        <p className="cover-subtitle">
-                            A purr-fect message just for you... 💌
-                        </p>
                     </div>
 
                     {/* User Image remains the same */}
@@ -93,10 +90,6 @@ const BookCanvas = ({ active, setActive }) => {
                         </div>
                         <div className="corner-ribbon bottom-right"></div>
                         <div className="confetti-dots"></div>
-
-                        <p className="signature">
-                            Your Best Friend, Rexon
-                        </p>
                     </div>
                 </div>
             </div>
