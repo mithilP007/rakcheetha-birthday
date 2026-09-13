@@ -367,6 +367,44 @@ body {
     display: block;
 }
 
+.sound_toggle_btn {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    user-select: none;
+}
+
+.sound_toggle_btn:hover {
+    background: rgba(209, 56, 82, 0.95);
+    border-color: #ffffff;
+    transform: scale(1.05);
+}
+
+.sound_toggle_btn:active {
+    transform: scale(0.95);
+}
+
+.sound_toggle_btn svg {
+    flex-shrink: 0;
+}
+
 .cricle {
     position: absolute;
     top: 20px;

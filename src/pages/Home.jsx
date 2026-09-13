@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import png from '../assets/1.png'
 import ballon1 from '../assets/balloon1.png'
 import ballon2 from '../assets/balloon2.png'
@@ -13,7 +13,53 @@ import birthdayVideo from "../assets/video.mp4";
 
 const Home = () => {
     // ------------------- Hooks 
-    const [Active, SetActive] = useState(true)
+    const [Active, SetActive] = useState(true);
+    const [isMuted, setIsMuted] = useState(false);
+    const videoRef = useRef(null);
+
+    const toggleAudio = (e) => {
+        if (e) e.stopPropagation();
+        if (videoRef.current) {
+            const nextMuted = !videoRef.current.muted;
+            videoRef.current.muted = nextMuted;
+            setIsMuted(nextMuted);
+            if (!nextMuted) {
+                videoRef.current.play().catch(() => {});
+            }
+        }
+    };
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.muted = false;
+            videoRef.current.play().then(() => {
+                setIsMuted(false);
+            }).catch(() => {
+                // If browser blocks autoplay with audio, fallback to muted autoplay
+                if (videoRef.current) {
+                    videoRef.current.muted = true;
+                    videoRef.current.play().catch(() => {});
+                    setIsMuted(true);
+                }
+            });
+        }
+
+        const handleUserInteract = () => {
+            if (videoRef.current && videoRef.current.muted) {
+                videoRef.current.muted = false;
+                setIsMuted(false);
+                videoRef.current.play().catch(() => {});
+            }
+        };
+
+        window.addEventListener("click", handleUserInteract, { once: true });
+        window.addEventListener("touchstart", handleUserInteract, { once: true });
+
+        return () => {
+            window.removeEventListener("click", handleUserInteract);
+            window.removeEventListener("touchstart", handleUserInteract);
+        };
+    }, []);
 
     useEffect(() => {
         let datetxt = "19 Nov";
@@ -114,15 +160,34 @@ const Home = () => {
 
                     <div className="right">
                         <div className="box__account">
-                            <div className="video_container">
+                            <div className="video_container" onClick={toggleAudio}>
                                 <video
+                                    ref={videoRef}
                                     src={birthdayVideo}
                                     autoPlay
                                     loop
-                                    muted
+                                    muted={isMuted}
                                     playsInline
                                     className="birthday_video"
                                 />
+                                <button
+                                    type="button"
+                                    className="sound_toggle_btn"
+                                    onClick={toggleAudio}
+                                    aria-label={isMuted ? "Unmute video audio" : "Mute video audio"}
+                                    title={isMuted ? "Click to play sound" : "Click to mute"}
+                                >
+                                    {isMuted ? (
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27l4.73 4.73H3c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h4l5 5V14.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                                        </svg>
+                                    ) : (
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77zm-2.5 0L6.5 7H3c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1h3.5l5 3.77c.66.5 1.5.03 1.5-.8V4.03c0-.83-.84-1.3-1.5-.8zM16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                                        </svg>
+                                    )}
+                                    <span className="sound_text">{isMuted ? "Unmute" : "Sound ON"}</span>
+                                </button>
                             </div>
                             <div className="name">
                                 <i className="fa-solid fa-heart"></i>
