@@ -107,6 +107,7 @@
 .boxMail .boxMail-container .card1 .userImg img {
     position: absolute;
     object-fit: cover;
+    object-position: center 20%;
     width: 100%;
     height: 100%;
 }
