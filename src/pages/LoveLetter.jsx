@@ -5,26 +5,25 @@ import '../LoveLetter.css';
 
 const LoveLetter = () => {
     const [openEnvelope, setOpenEnvelope] = useState(false);
-    const [isPlaying, setIsPlaying] = useState(true);
-    const [isMuted, setIsMuted] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [isMuted, setIsMuted] = useState(true);
     const videoRef = useRef(null);
 
-    // Auto-play with audio when envelope opens
+    // Auto-play when envelope opens
     useEffect(() => {
         if (openEnvelope && videoRef.current) {
-            videoRef.current.muted = false;
-            videoRef.current.play().then(() => {
-                setIsPlaying(true);
-                setIsMuted(false);
-            }).catch(() => {
-                // If browser autoplay policy blocks unmuted audio on start, fallback to muted autoplay
-                if (videoRef.current) {
-                    videoRef.current.muted = true;
-                    videoRef.current.play().catch(() => {});
-                    setIsPlaying(true);
-                    setIsMuted(true);
-                }
-            });
+            videoRef.current.muted = true;
+            setIsMuted(true);
+            const playPromise = videoRef.current.play();
+            if (playPromise !== undefined) {
+                playPromise
+                    .then(() => {
+                        setIsPlaying(true);
+                    })
+                    .catch(() => {
+                        setIsPlaying(false);
+                    });
+            }
         }
     }, [openEnvelope]);
 
@@ -33,8 +32,7 @@ const LoveLetter = () => {
         if (e) e.stopPropagation();
         if (videoRef.current) {
             if (videoRef.current.paused) {
-                videoRef.current.play().catch(() => {});
-                setIsPlaying(true);
+                videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
             } else {
                 videoRef.current.pause();
                 setIsPlaying(false);
@@ -49,9 +47,8 @@ const LoveLetter = () => {
             const nextMuted = !videoRef.current.muted;
             videoRef.current.muted = nextMuted;
             setIsMuted(nextMuted);
-            if (!nextMuted && videoRef.current.paused) {
-                videoRef.current.play().catch(() => {});
-                setIsPlaying(true);
+            if (videoRef.current.paused) {
+                videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
             }
         }
     };
@@ -122,13 +119,22 @@ const LoveLetter = () => {
                                     loop
                                     muted={isMuted}
                                     playsInline
+                                    controls
+                                    preload="metadata"
+                                    onPlay={() => setIsPlaying(true)}
+                                    onPause={() => setIsPlaying(false)}
+                                    onLoadedData={() => {
+                                        if (videoRef.current) {
+                                            videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+                                        }
+                                    }}
                                     className="love_video_player"
                                 />
 
                                 {/* Floating Play/Pause Center Indicator on pause */}
                                 {!isPlaying && (
                                     <div className="video_pause_overlay">
-                                        <div className="pause_icon_badge">⏸️ Paused</div>
+                                        <div className="pause_icon_badge">▶️ Click to Play Video</div>
                                     </div>
                                 )}
                             </div>
