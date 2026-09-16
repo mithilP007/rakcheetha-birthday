@@ -292,7 +292,7 @@ const CelebrationShow = ({ onClose }) => {
                     </div>
                     <div className="phase_title_card">
                         <h2 className="glow_text">🎊 Party Time! 🎊</h2>
-                        <p className="sub_text">Get ready for Ruthika's 8th Birthday Extravaganza!</p>
+                        <p className="sub_text">Get ready for Rakcheetha's Birthday Extravaganza!</p>
                     </div>
                     <div className="popper_item popper_right">
                         <div className="popper_icon">🎉</div>
@@ -357,12 +357,12 @@ const CelebrationShow = ({ onClose }) => {
                     <div className="spotlight_card_3d">
                         <div className="crown_badge">👑</div>
                         <div className="spotlight_photo_wrapper">
-                            <img src={ruthikaImg} alt="Ruthika" className="spotlight_photo" />
+                            <img src={ruthikaImg} alt="Rakcheetha" className="spotlight_photo" />
                             <div className="shimmer_ring"></div>
                         </div>
                         <div className="spotlight_text">
-                            <h1 className="hologram_title">Happy 8th Birthday</h1>
-                            <h2 className="hologram_name">Ruthika 💖</h2>
+                            <h1 className="hologram_title">Happy Birthday</h1>
+                            <h2 className="hologram_name">Rakcheetha 💖</h2>
                             <p className="hologram_sub">✨ Our Sweetest Little Star ✨</p>
                         </div>
                     </div>
@@ -374,7 +374,7 @@ const CelebrationShow = ({ onClose }) => {
                 <div className="phase_container phase_finale">
                     <div className="finale_card">
                         <div className="finale_trophy">🎂✨🎈</div>
-                        <h1 className="finale_title">Happy 8th Birthday Ruthika!</h1>
+                        <h1 className="finale_title">Happy Birthday Rakcheetha!</h1>
                         <p className="finale_msg">
                             Wishing you endless joy, love, magic, and boundless laughter today and always! 💖🦄
                         </p>
