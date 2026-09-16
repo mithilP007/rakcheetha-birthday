@@ -63,16 +63,21 @@ const BookCanvas = ({ active, setActive }) => {
                             To You!
                         </h3>
 
-                        {/* Swapping back to H2 to match the original CSS targeting */}
                         <div className="card2-message-text italic">
-                            <article style={{ marginBottom: '12px' }}>
-                                Happy Birthday, our sweetest little Rakcheetha! 🎂🩷
+                            <article style={{ marginBottom: '10px' }}>
+                                Happy Birthday, beautiful girl. ✨
                             </article>
-                            <article style={{ marginBottom: '12px' }}>
-                                May your beautiful smile always sparkle like sunshine, and may your little heart always be filled with love, laughter, fun, and magic.
+                            <article style={{ marginBottom: '10px' }}>
+                                Look at everything you’ve faced this past year and look at how you are still standing, still shining.
                             </article>
-                            <article style={{ marginBottom: '12px' }}>
-                                Keep smiling, keep dreaming, and keep spreading your adorable happiness everywhere you go! 🎈🧸✨💖
+                            <article style={{ marginBottom: '10px' }}>
+                                I am so incredibly proud of your strength, but please remember you don't have to carry the weight alone anymore.
+                            </article>
+                            <article style={{ marginBottom: '10px' }}>
+                                Your heart is safe with me. I believe in you, and I’m with you through every single step.
+                            </article>
+                            <article style={{ marginBottom: '0px' }}>
+                                Cheers to a new year of healing and happiness. 🥂💖
                             </article>
                         </div>
 
